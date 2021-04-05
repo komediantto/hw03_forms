@@ -14,9 +14,10 @@ class Group(models.Model):
 
 
 class Post(models.Model):
-    text = models.TextField()
+    text = models.TextField(verbose_name='Ваш пост')
     pub_date = models.DateTimeField('date published',
-                                    auto_now_add=True)
+                                    auto_now_add=True,
+                                    )
     author = models.ForeignKey(User,
                                on_delete=models.CASCADE,
                                related_name='posts')
@@ -24,7 +25,8 @@ class Post(models.Model):
                               on_delete=models.SET_NULL,
                               related_name='posts',
                               blank=True,
-                              null=True)
+                              null=True,
+                              verbose_name='Выбери сообщество')
 
     class Meta:
         ordering = ['-pub_date']

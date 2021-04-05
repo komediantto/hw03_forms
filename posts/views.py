@@ -21,7 +21,7 @@ def new_post(request):
         form = PostForm()
         return render(request, 'new_post.html', {'form': form})
     form = PostForm(request.POST)
-    if form.is_valid() is False:
+    if form.is_valid():
         return render(request, 'new_post.html', {'form': form})
     new_item = form.save(commit=False)
     new_item.author = request.user
