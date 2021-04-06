@@ -19,7 +19,7 @@ def group_posts(request, slug):
 def new_post(request):
     form = PostForm(request.POST or None)
     if request.method == 'GET' or not form.is_valid():
-        return render(request, "new.html", {'form': form})
+        return render(request, "new_post.html", {'form': form})
     post = form.save(commit=False)
     post.author = request.user
     post.save()
