@@ -18,7 +18,7 @@ def group_posts(request, slug):
 @login_required
 def new_post(request):
     form = PostForm(request.POST or None)
-    if request.method == 'GET' or not form.is_valid():
+    if not form.is_valid():
         return render(request, "new_post.html", {'form': form})
     post = form.save(commit=False)
     post.author = request.user
